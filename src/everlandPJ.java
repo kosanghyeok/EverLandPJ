@@ -14,25 +14,47 @@ Scanner myInput = new Scanner(System.in) ;
    
     
       
-	int todayYear = 0, todayDate = 0, birthYear, birthMonth, birthDay, birthDate, putDate, Prior, Count, manAge, Price = 0;
-	String ticketType = null, registNumber, age;
-String b = "";
+	int todayYear, todayDate, birthYear, birthMonth, birthDay, birthDate, putDate, Prior, Count = 0, manAge, Price = 0;
+	String ticketType, registNumber, age = null ;
+	String b = "";
+	int addOrder = 0, orderCount = 0 ;
+	String[] saveTicket = new String[100];
+	String[] saveAge = new String[100];
+	int[] saveCount = new int[100];
+	int[] savePrice = new int[100];
+	String[] saveb = new String[100];
       
+	
+	String pattern1 = "yyyyMMdd";
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern1);
+	String today = simpleDateFormat.format(new Date());
+	System.out.println(today);
+	todayYear = Integer.parseInt(today.substring(0,4));
+    todayDate = Integer.parseInt(today.substring(4,8));
       
+     
+      while(true) {
+    	  orderCount = 0;
       
-      
-      System.out.println("이용날짜를 입력해주세요. ex)20210605 ");
-      putDate=myInput.nextInt();
-      
-      if(putDate == 20210904 || putDate == 20210905 || putDate == 20210911 || putDate == 20210912 ||
+      do {
+     
+    	  while(true) {
+			  System.out.println("--------------------------------------");
+			  System.out.println("이용날짜를 입력해주세요.	 ex) 20210916 ");
+			  System.out.print(": ");
+			  Scanner myInput1 = new Scanner(System.in);
+			  putDate = myInput1.nextInt();
+			  
+			  
+		   if(putDate == 20210904 || putDate == 20210905 || putDate == 20210911 || putDate == 20210912 ||
       	      putDate == 20210918 || putDate == 20210919 || putDate == 20210920 || putDate == 20210921 ||
       	      putDate == 20210922 || putDate == 20210925 || putDate == 20210926 || putDate == 20211002 ||
       		  putDate == 20211003 || putDate == 20211009 || putDate == 20211010 || putDate == 20211016 || 
       		  putDate == 20211017 || putDate == 20211023 || putDate == 20211024 || putDate == 20211030 ||
       		  putDate == 20211031 || putDate == 20211106 || putDate == 20211107) {
-	ticketType = "A티켓" ;
-
-      }else if(putDate == 20210703 || putDate == 20210704 || putDate == 20210710 || putDate == 20210711 || putDate == 20210717 
+			  ticketType = "A티켓" ;
+			  break;
+		   }else if(putDate == 20210703 || putDate == 20210704 || putDate == 20210710 || putDate == 20210711 || putDate == 20210717 
 				 || putDate == 20210718 || putDate == 20210724 || putDate == 20210725 || putDate == 20210729 || putDate == 20210730 
 				 || putDate == 20210731 || putDate == 20210801 || putDate == 20210802 || putDate == 20210803 || putDate == 20210807 
 				 || putDate == 20210808 || putDate == 20210814 || putDate == 20210815 || putDate == 20210821 || putDate == 20210822 
@@ -48,11 +70,9 @@ String b = "";
 				 || putDate == 20211108 || putDate == 20211109 || putDate == 20211110 || putDate == 20211111 || putDate == 20211112 
 				 || putDate == 20211113 || putDate == 20211114 || putDate == 20211120 || putDate == 20211121 || putDate == 20211127 
 				 || putDate == 20211128) {
-	ticketType = "B티켓";
-      
-      }
-      
-      else if(putDate == 20210628 || putDate == 20210629 || putDate == 20210630 || putDate == 20210701 || putDate == 20210702
+			     ticketType = "B티켓";
+			     break;
+		   }else if(putDate == 20210628 || putDate == 20210629 || putDate == 20210630 || putDate == 20210701 || putDate == 20210702
 				 || putDate == 20210705 || putDate == 20210706 || putDate == 20210707 || putDate == 20210708 || putDate == 20210709
 				 || putDate == 20210712 || putDate == 20210713 || putDate == 20210714 || putDate == 20210715 || putDate == 20210716
 				 || putDate == 20210719 || putDate == 20210720 || putDate == 20210721 || putDate == 20210722 || putDate == 20210723
@@ -64,10 +84,16 @@ String b = "";
 				 || putDate == 20211115 || putDate == 20211116 || putDate == 20211117 || putDate == 20211118 || putDate == 20211119
 				 || putDate == 20211122 || putDate == 20211123 || putDate == 20211124 || putDate == 20211125 || putDate == 20211126
 				 || putDate == 20211129 || putDate == 20211130) {  
-	ticketType = "C티켓";
-   	   }
-	    	
-      if(ticketType == "A 티켓") {
+			     ticketType = "C티켓";
+			     break;
+   	   }else {
+   		   	System.out.println("다시 입력해 주세요.");
+   		   	continue;
+   	   			}
+    	  	}		   
+		   
+		   
+		   if(ticketType == "A 티켓") {
 			Price = Price + 60000;
 		} else if(ticketType == "B 티켓") {
 			Price = Price + 56000;
@@ -79,7 +105,7 @@ String b = "";
 		System.out.println("ㅡ");
 
 		while(true) {
-			System.out.print("주민번호 앞자리를 입력하세요.(숫자로만 951123)(0 누르면 처음으로)\n");
+			System.out.print("주민번호 앞자리를 입력하세요.(숫자로만 950916)(0 누르면 처음으로)\n");
 			System.out.print(": ");
 			Scanner myInput2 = new Scanner(System.in);
 			registNumber = myInput2.nextLine();
@@ -101,7 +127,11 @@ String b = "";
 				break;
 			}
 		}
-		
+				if (registNumber.equals("0")) {
+					continue;			
+				} else {
+
+		}
 	
 		birthYear = Integer.parseInt(registNumber.substring(0,2));
 		birthDate = Integer.parseInt(registNumber.substring(2,6));
@@ -177,6 +207,9 @@ String b = "";
 				System.out.println("다시 입력해 주세요.");
 				continue;
 			}
+		}
+			if(Prior == 0) {
+				continue;
 		}
 		
 
@@ -256,21 +289,34 @@ String b = "";
 				Price = 0;
 			} else {Price = 42000;}
 		} break;
+		
 		}
-      
-      
- 
-   
-      System.out.printf("가격은 %d원 입니다. \n", Price * Count);
-      System.out.println("감사합니다.");
-      int totalPrice = Count * Price;
-      System.out.println("=============== 에버랜드 =================");
-      System.out.printf("%s  %s  X  %d  %d  %s\n", ticketType, age, Count, Price*Count, b);
-      System.out.println("========================================");
-      
-      
-      
-      
-   }
+		
 
+		System.out.print("1. 추가구매, 2. 구매종료");
+		Scanner myInput5 = new Scanner(System.in);
+		addOrder = myInput5.nextInt();
+		
+		saveTicket[orderCount] = ticketType;
+		saveAge[orderCount] = age;
+		saveCount[orderCount] = Count;
+		savePrice[orderCount] = Price;
+		saveb[orderCount] = b;
+		orderCount ++ ;
+      }while(addOrder == 1);
+      
+      
+      System.out.println("감사합니다.");
+      System.out.println("=============== 에버랜드 =================");
+     
+	for(int index = 0; index < orderCount; index++) {
+      System.out.printf("%s  %s  X  %d  %d  %s\n", saveTicket[index], saveAge[index],
+    		  			saveCount[index], savePrice[index], saveb[index]);
+	}
+      System.out.println("========================================");
+      break;
+      
+      			}
+
+   		}
 }
