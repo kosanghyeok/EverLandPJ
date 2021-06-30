@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class EverlandProcess {
 	public int todayYear, todayDate, birthYear, birthMonth, birthDay, birthDate, putDate, Prior, Sale, manAge;
-	public int Count = 0, Price = 0, addOrder = 0;
+	public int Count = 0, Price = 0, addOrder = 0, totalPrice = 0;
 	public String ticketType, registNumber, age = null, b = "", isEventCoupon = "";
 	
 			
@@ -321,7 +321,10 @@ public class EverlandProcess {
 				} else if(age == "36개월미만") {
 					Price = 0;
 				} else {Price = 40000*95/100;}
-			} break;
+				
+			} 
+			b = "5% 할인쿠폰 적용";
+			break;
 			case 3: isEventCoupon = "10%"; 
 			if(ticketType == "A 티켓") {
 				if(age == "어른") {
@@ -341,7 +344,9 @@ public class EverlandProcess {
 				} else if(age == "36개월미만") {
 					Price = 0;
 				} else {Price = 40000*90/100;}
-			} break;
+			} 
+			b = "10% 할인쿠폰 적용";
+			break;
 			case 4: isEventCoupon = "15%";
 			if(ticketType == "A 티켓") {
 				if(age == "어른") {
@@ -361,7 +366,9 @@ public class EverlandProcess {
 				} else if(age == "36개월미만") {
 					Price = 0;
 				} else {Price = 40000*85/100;}
-			} break;
+			} 
+			b = "15% 할인쿠폰 적용";
+			break;
 			case 5: isEventCoupon = "30%"; 
 			if(ticketType == "A 티켓") {
 				if(age == "어른") {
@@ -381,7 +388,10 @@ public class EverlandProcess {
 				} else if(age == "36개월미만") {
 					Price = 0;
 				} else {Price = 40000*70/100;}
-			} break;
+			}
+			b = "30% 할인쿠폰 적용";
+			break;
+			
 			}
 			}
 	
@@ -391,8 +401,5 @@ public class EverlandProcess {
 		addOrder = myInput5.nextInt();
 	}
 		
-	
-	
-	
-	       
-	}
+		 		
+}
