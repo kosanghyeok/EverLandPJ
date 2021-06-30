@@ -16,7 +16,7 @@ public class EverlandMain {
 	
 		
 	while(true) {
-		 everArray.clearALL();
+		 
 	 do {
     	  everProcess.inputDate();
     	  everProcess.Pricetag();
@@ -29,9 +29,10 @@ public class EverlandMain {
   		  everProcess.choosePrior();
   		  if(everProcess.Prior == 0) {continue;}
   		  System.out.println("ㅡ");
+  		  everProcess.EventCp();
   		  everProcess.moreORnot();
   		  everArray.Arrayadd(everProcess.ticketType, everProcess.age,
-  				  			everProcess.Count, everProcess.Price, everProcess.b);
+  				  			everProcess.Count, everProcess.Price, everProcess.b, everProcess.isEventCoupon);
 		  System.out.println("감사합니다.");
 	      System.out.println("=============== 에버랜드 =================");
       	}while(everProcess.addOrder == 1);

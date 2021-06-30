@@ -6,15 +6,15 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class EverlandProcess {
-	public int todayYear, todayDate, birthYear, birthMonth, birthDay, birthDate, putDate, Prior, manAge;
+	public int todayYear, todayDate, birthYear, birthMonth, birthDay, birthDate, putDate, Prior, Sale, manAge;
 	public int Count = 0, Price = 0, addOrder = 0;
-	public String ticketType, registNumber, age = null, b = "";
+	public String ticketType, registNumber, age = null, b = "", isEventCoupon = "";
 	
+			
 	public String pattern1 = "yyyyMMdd";
 	public SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern1);
 	public String today = simpleDateFormat.format(new Date());
 
-	
 	public void whatToday() {
 
 	System.out.println(today);
@@ -281,12 +281,118 @@ public class EverlandProcess {
 		
 	}
 	
+	public void EventCp() {
+		
+			while(true) {
+				System.out.println("이벤트쿠폰이 있으신가요?");
+				System.out.println("1. 없음(우대사항 있는 사람) ");
+				System.out.println("2. 5%");
+				System.out.println("3. 10%");
+				System.out.println("4. 15%");
+				System.out.println("5. 30%");
+				System.out.print(": ");
+				Scanner myInput5 = new Scanner(System.in);
+				Sale = myInput5.nextInt();
+				if(0 <= Sale && Sale <=5 ) {
+					break;
+				} else {
+					System.out.println("다시 입력해 주세요.");
+					continue;
+				}
+			}
+			switch(Sale) {
+			case 1: isEventCoupon = "없음"; break;
+			case 2: isEventCoupon = "5%"; 
+			if(ticketType == "A 티켓") {
+				if(age == "어른") {
+					Price = 60000*95/100;
+				} else if(age == "36개월미만") {
+					Price = 0;
+				} else {Price = 48000*95/100;}
+			} else if(ticketType == "B 티켓") {
+				if(age == "어른") {
+					Price = 56000*95/100;
+				} else if(age == "36개월미만") {
+					Price = 0;
+				} else {Price = 44000*95/100;}
+			} else {
+				if(age == "어른") {
+					Price = 50000*95/100;
+				} else if(age == "36개월미만") {
+					Price = 0;
+				} else {Price = 40000*95/100;}
+			} break;
+			case 3: isEventCoupon = "10%"; 
+			if(ticketType == "A 티켓") {
+				if(age == "어른") {
+					Price = 60000*90/100;
+				} else if(age == "36개월미만") {
+					Price = 0;
+				} else {Price = 48000*90/100;}
+			} else if(ticketType == "B 티켓") {
+				if(age == "어른") {
+					Price = 56000*90/100;
+				} else if(age == "36개월미만") {
+					Price = 0;
+				} else {Price = 44000*90/100;}
+			} else {
+				if(age == "어른") {
+					Price = 50000*90/100;
+				} else if(age == "36개월미만") {
+					Price = 0;
+				} else {Price = 40000*90/100;}
+			} break;
+			case 4: isEventCoupon = "15%";
+			if(ticketType == "A 티켓") {
+				if(age == "어른") {
+					Price = 60000*85/100;
+				} else if(age == "36개월미만") {
+					Price = 0;
+				} else {Price = 48000*85/100;}
+			} else if(ticketType == "B 티켓") {
+				if(age == "어른") {
+					Price = 56000*85/100;
+				} else if(age == "36개월미만") {
+					Price = 0;
+				} else {Price = 44000*85/100;}
+			} else {
+				if(age == "어른") {
+					Price = 50000*85/100;
+				} else if(age == "36개월미만") {
+					Price = 0;
+				} else {Price = 40000*85/100;}
+			} break;
+			case 5: isEventCoupon = "30%"; 
+			if(ticketType == "A 티켓") {
+				if(age == "어른") {
+					Price = 60000*70/100;
+				} else if(age == "36개월미만") {
+					Price = 0;
+				} else {Price = 48000*70/100;}
+			} else if(ticketType == "B 티켓") {
+				if(age == "어른") {
+					Price = 56000*70/100;
+				} else if(age == "36개월미만") {
+					Price = 0;
+				} else {Price = 44000*70/100;}
+			} else {
+				if(age == "어른") {
+					Price = 50000*70/100;
+				} else if(age == "36개월미만") {
+					Price = 0;
+				} else {Price = 40000*70/100;}
+			} break;
+			}
+			}
+	
 	public void moreORnot() {
 		System.out.print("1. 추가구매, 2. 구매종료");
 		Scanner myInput5 = new Scanner(System.in);
 		addOrder = myInput5.nextInt();
 	}
 		
+	
+	
 	
 	       
 	}
